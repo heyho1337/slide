@@ -1,0 +1,45 @@
+<section class="slider" data-controller="slider">
+    <div data-slider-target="container" class="swiper-container">
+        <div class="swiper-wrapper">
+            {% for image in slider %}
+                <div class="swiper-slide">
+                    <picture>
+                        <source type="image/webp" srcset="{{ twigService.cdn ~ 'assets/uploaded_images/slideshow/' ~ image.kepnev }}.webp">
+                        <source type="image/jpg" srcset="{{ twigService.cdn ~ 'assets/uploaded_images/slideshow/' ~ image.kepnev }}">
+                        <img
+                                src="{{ twigService.cdn ~ 'assets/uploaded_images/slideshow/' ~ image.kepnev }}"
+                                alt="{{ image.alt }}"
+                                title="{{ image.title }}"
+                                width="1920"
+                                height="900"
+                                {% if not loop.first %}loading="lazy"{% endif %}
+                        >
+                    </picture>
+                    <div class="slideText">
+                        <div class="text">
+                            {% if loop.first %}
+                                <h1>{{ image.nev }}</h1>
+                            {% else %}
+                                <span>{{ image.nev }}</span>
+                            {% endif %}
+                            <p>
+                                {{ image.caption }}
+                            </p>
+                        </div>
+                        <ul class="buttons">
+                            <li>
+                                <a href="/{{ '1134'|alias }}/" title="{{ 'kerj_ajanlatot'|fordito }}">
+                                    <span>{{ 'kerj_ajanlatot'|fordito }}</span>
+                                </a>
+                            </li>
+                            <li>
+                                {{ twigService.phone|raw }}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="swiper-pagination"></div>
+</section>

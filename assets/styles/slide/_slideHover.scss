@@ -1,0 +1,16 @@
+@media(min-width:1200px){
+    .slider{
+        .slideText{
+            a{
+                //@include bgHover(#fff);
+                //@include svgHover($red);
+                //@include textHover($red);
+            }
+            .swiper-pagination{
+                span{
+                    @include bgHover($red);
+                }
+            }
+        }
+    }
+}
